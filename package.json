@@ -1,0 +1,26 @@
+{
+  "name": "project-template",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "npm@9.6.6",
+  "workspaces": [
+    "apps/[^_]*",
+    "packages/[^_]*",
+    "shared/[^_]*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.9.7",
+    "eslint": "8.44.0",
+    "eslint-config-custom": "*",
+    "prettier": "^2.5.1",
+    "turbo": "latest"
+  }
+}
