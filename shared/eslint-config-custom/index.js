@@ -1,5 +1,13 @@
 module.exports = {
-  plugins: ["react", "jest-formatting", "jsx-a11y", "unicorn", "@typescript-eslint", "import", "simple-import-sort"],
+  plugins: [
+    "react",
+    "jest-formatting",
+    "jsx-a11y",
+    "unicorn",
+    "@typescript-eslint",
+    "import",
+    "simple-import-sort",
+  ],
   extends: [
     "turbo",
     "prettier",
@@ -21,7 +29,14 @@ module.exports = {
     "simple-import-sort/imports": [
       "error",
       {
-        groups: [["^\\u0000"], ["^node:"], ["^react"], ["^@?\\w"], ["^"], ["^\\."]],
+        groups: [
+          ["^\\u0000"],
+          ["^node:"],
+          ["^react"],
+          ["^@?\\w"],
+          ["^"],
+          ["^\\."],
+        ],
       },
     ],
     "simple-import-sort/exports": "error",
