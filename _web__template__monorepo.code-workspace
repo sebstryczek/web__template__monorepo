@@ -19,7 +19,7 @@
     "eslint.codeActionsOnSave.mode": "all",
     "eslint.format.enable": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     },
     "files.insertFinalNewline": true,
     "files.eol": "\n",
