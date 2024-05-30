@@ -2,29 +2,27 @@
   "name": "project-template",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "npm@9.6.6",
+  "type": "module",
   "workspaces": [
     "apps/vite-app",
     "packages/[^_]*",
-    "shared/[^_]*"
+    "packages-dev/[^_]*"
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev --parallel --concurrency=10 --filter=vite-app",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "install:clean": "rm -rf node_modules */**/node_modules dist */**/dist package-lock.json */**/package-lock.json */**/declarations && npm i",
-    "postinstall": "npm run build",
+    "install:clean": "node ./scripts/execute.js clean-up && npm install && npm run build",
     "ncu": "npx npm-check-updates --deep",
     "ncu:u": "npx npm-check-updates --deep -u"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.11.2",
-    "eslint": "8.56.0",
+    "@turbo/gen": "^1.13.3",
     "eslint-config-custom": "*",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.5",
     "turbo": "latest"
   }
 }

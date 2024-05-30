@@ -4,20 +4,21 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "wait-for-packages": "sh ./wait-for-packages.sh",
+    "wait-for-packages": "node ../../scripts/execute.js wait-for-packages",
     "dev": "npm run wait-for-packages && vite",
     "build": "vite build",
     "lint": "tsc",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@vitejs/plugin-basic-ssl": "^1.0.2",
-    "eslint": "8.56.0",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
     "eslint-config-custom": "*",
     "tsconfig": "*",
-    "typescript": "5.3.3",
-    "vite": "^5.0.10",
-    "vitest": "^1.1.1"
+    "typescript": "5.4.5",
+    "vite": "^5.2.12",
+    "vitest": "^1.6.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vite-plugin-mkcert": "^1.17.5"
+  }
 }
