@@ -1,6 +1,7 @@
 {
   "name": "project-template",
   "version": "0.0.1",
+  "packageManager": "npm@10.9.1",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -10,7 +11,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel --concurrency=10 --filter=vite-app",
+    "dev": "turbo dev --concurrency=10 --filter=vite-app",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
@@ -20,9 +21,9 @@
     "ncu:u": "npx npm-check-updates --deep -u"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.13.3",
+    "@turbo/gen": "^2.3.3",
     "eslint-config-custom": "*",
-    "prettier": "^3.2.5",
+    "prettier": "^3.4.1",
     "turbo": "latest"
   }
 }

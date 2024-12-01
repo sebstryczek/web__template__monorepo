@@ -7,7 +7,7 @@ import { spawn } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const SCRIPT_NAME = process.argv[2];
+const [,, SCRIPT_NAME, ...SCRIPT_ARGS] = process.argv;
 
 if (!SCRIPT_NAME) {
   console.error("Usage: node execute.js <script-name-without-extension>");
@@ -46,7 +46,7 @@ if (process.platform === "win32") {
     await runScript('powershell', ['Set-ExecutionPolicy', '-Scope', 'CurrentUser', '-ExecutionPolicy', 'Unrestricted', '-Force'], { shell: true });
     console.log('Execution Policy has been changed.');
   
-    await runScript('powershell', ['-File', scriptFilePath], { shell: true });
+    await runScript('powershell', ['-File', scriptFilePath, ...SCRIPT_ARGS], { shell: true });
     console.log('PowerShell script has been executed successfully.\n');
   } catch (error) {
     console.error(error);
@@ -57,7 +57,7 @@ if (process.platform === "win32") {
   const scriptFilePath = join(__dirname, SCRIPT_DIRECTORY_NAME, `${SCRIPT_FILE_NAME}.sh`);
 
   try {
-    await runScript('sh', [scriptFilePath], { encoding: "utf8" });
+    await runScript('sh', [scriptFilePath, ...SCRIPT_ARGS], { encoding: "utf8" });
     console.log('Bash script has been executed successfully.\n');
   } catch (error) {
     console.error(error);

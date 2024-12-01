@@ -1,38 +1,42 @@
 {
   "name": "package-template",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/index.esm.js",
+  "main": "./dist/index.es.js",
   "module": "./dist/index.cjs.js",
   "types": "./declarations/index.d.ts",
-  "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./declarations/index.d.ts"
     },
     "./*": {
-      "import": "./dist/*/index.esm.js",
-      "require": "./dist/*/index.cjs.js"
+      "import": "./dist/*/index.es.js",
+      "require": "./dist/*/index.cjs.js",
+      "types": "./declarations/*/index.d.ts"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "declarations"
   ],
   "scripts": {
-    "build": "tsc && vite build",
-    "dev": "vite build --watch & tsc -w --outDir declarations --emitDeclarationOnly",
+    "build": "vite build",
+    "clean-up": "rm -rf dist && rm -rf declarations",
+    "pre-dev": "npm run clean-up",
+    "dev": "npm run pre-dev && vite build --watch --mode development",
     "test": "vitest",
-    "lint": "eslint \"lib/**/*.{ts,tsx}\" --max-warnings=0",
-    "lint:fix": "eslint \"lib/**/*.{ts,tsx}\" --fix"
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix"
   },
   "devDependencies": {
     "eslint-config-custom": "*",
     "tsconfig": "*",
-    "typescript": "5.4.5",
-    "vite": "^5.2.12",
-    "vitest": "^1.6.0"
+    "typescript": "5.7.2",
+    "vite": "^6.0.1",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.6"
   },
   "dependencies": {},
   "peerDependencies": {}

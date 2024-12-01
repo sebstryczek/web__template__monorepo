@@ -1,20 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**",
-        ".next/**",
-        "!.next/cache/**"
-      ]
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "test": {
-      "dependsOn": [
-        "^build"
-      ]
+      "cache": false,
+      "dependsOn": ["^build"]
     },
     "lint": {
       "cache": false,
@@ -30,10 +24,5 @@
       "outputs": []
     }
   },
-  "globalDependencies": [
-    ".env",
-    "shared/tsconfig/*.json",
-    "shared/eslint-config-custom/index.js",
-    "shared/eslint-config-custom/package.json"
-  ]
+  "globalEnv": ["BASE_URL", "DEV", "MODE", "PROD", "SSR"]
 }

@@ -15,3 +15,7 @@ echo "Done.";
 echo "Removing declarations directories...";
 rm -rf declarations */**/declarations
 echo "Done.";
+
+echo "Removing turbo directories...";
+rm -rf .turbo */**/.turbo
+echo "Done.";

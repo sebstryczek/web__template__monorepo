@@ -4,21 +4,20 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "wait-for-packages": "node ../../scripts/execute.js wait-for-packages",
-    "dev": "npm run wait-for-packages && vite",
     "build": "vite build",
-    "lint": "tsc",
+    "clean-up": "rm -rf dist && rm -rf declarations",
+    "wait-for-packages": "node ../../scripts/execute.js wait-for-packages",
+    "pre-dev": "npm run clean-up && npm run wait-for-packages",
+    "dev": "npm run pre-dev && vite --mode development",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@vitejs/plugin-basic-ssl": "^1.1.0",
     "eslint-config-custom": "*",
     "tsconfig": "*",
-    "typescript": "5.4.5",
-    "vite": "^5.2.12",
-    "vitest": "^1.6.0"
+    "typescript": "5.7.2",
+    "vite": "^6.0.1",
+    "vitest": "^2.1.6"
   },
-  "dependencies": {
-    "vite-plugin-mkcert": "^1.17.5"
-  }
+  "dependencies": {}
 }

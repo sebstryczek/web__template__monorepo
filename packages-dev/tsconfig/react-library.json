@@ -11,12 +11,8 @@
     ],
     "jsx": "react",
     "module": "esnext",
-    "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true
   }
 }
